@@ -1,11 +1,15 @@
 🎵 Snowflake ETL Pipeline — From Raw Data to Star Schema
+
 This project demonstrates a complete ETL/ELT workflow in Snowflake, including data extraction, loading, transformation, and analytical querying.
 
 📘 Project Overview
+
 This project implements an ETL and dimensional modeling workflow in Snowflake for analyzing musical tracks and their descriptive attributes.
+
 The goal is to transform a normalized 3NF schema into a star schema optimized for analytical performance and clarity.
 
 🟦 Extraction
+
 Creates a Snowflake stage to extract raw data files (CSV/JSON) from local or cloud storage
 
 Defines file formats
@@ -13,6 +17,7 @@ Defines file formats
 Validates data structure before loading
 
 🟩 Loading
+
 Loads staged data into raw tables
 
 Performs basic data validation
@@ -22,6 +27,7 @@ Applies type casting and integrity checks
 Establishes the foundation for the normalized 3NF schema
 
 🟨 Transformation
+
 Transforms normalized 3NF tables into a star schema optimized for analytical queries.
 
 Includes:
@@ -33,6 +39,7 @@ Building dimension tables for descriptive attributes
 Introducing a bridge table to handle many‑to‑many playlist–track relationships
 
 🟧 Analysis
+
 Executes analytical SQL queries on the star schema to enable:
 
 Aggregation
