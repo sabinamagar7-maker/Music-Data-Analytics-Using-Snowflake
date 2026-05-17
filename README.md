@@ -1,4 +1,4 @@
-#  Snowflake ETL Pipeline — From Normalized Data to Star Schema
+#  Snowflake ELT Pipeline — From Normalized Data to Star Schema
 
 ##  Project Overview
 
