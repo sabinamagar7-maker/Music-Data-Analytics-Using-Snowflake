@@ -1,89 +1,266 @@
-🎵 Snowflake ETL Pipeline — From Raw Data to Star Schema
+#  Snowflake ETL Pipeline — From Normalized Data to Star Schema
 
-This project demonstrates a complete ETL/ELT workflow in Snowflake, including data extraction, loading, transformation, and analytical querying.
+##  Project Overview
 
-📘 Project Overview
+This project demonstrates a complete ELT workflow implemented in Snowflake, focusing on transforming an already normalized relational dataset into a star schema optimized for analytical querying and reporting.
 
-This project implements an ETL and dimensional modeling workflow in Snowflake for analyzing musical tracks and their descriptive attributes.
+The project showcases modern data warehousing concepts such as:
+- Snowflake staging and loading
+- ELT architecture
+- Dimensional modeling
+- Star schema transformation
+- Fact and dimension table design
+- Analytical SQL querying
 
-The goal is to transform a normalized 3NF schema into a star schema optimized for analytical performance and clarity.
+The primary objective was to reshape normalized relational tables into an analytics-friendly warehouse model that improves query simplicity and reporting performance.
 
-🟦 Extraction
+---
 
-Creates a Snowflake stage to extract raw data files (CSV/JSON) from local or cloud storage
+#  Architecture
 
-Defines file formats
+This project follows a simplified ELT architecture.
 
-Validates data structure before loading
+The source data was already provided in a normalized relational structure. The workflow therefore focuses on loading normalized datasets into Snowflake and transforming them into a star schema optimized for analytics.
 
-🟩 Loading
+```text
+Normalized Source Data
+        ↓
+Snowflake Stage / File Format
+        ↓
+Normalized Tables in Snowflake
+        ↓
+Star Schema Transformation
+        ↓
+Fact & Dimension Tables
+        ↓
+Analytical SQL Queries
+```
 
-Loads staged data into raw tables
+---
 
-Performs basic data validation
+#  Extraction
 
-Applies type casting and integrity checks
+The extraction layer prepares normalized source datasets for loading into Snowflake.
 
-Establishes the foundation for the normalized 3NF schema
+Main tasks:
+- Create Snowflake stages
+- Define file formats
+- Validate source file structure
+- Prepare CSV/JSON datasets for ingestion
 
-🟨 Transformation
+### Features
 
-Transforms normalized 3NF tables into a star schema optimized for analytical queries.
+- Uses Snowflake staging architecture
+- Supports structured source files
+- Validates schema consistency before loading
 
-Includes:
+---
 
-Creating fact_music table (one row per track)
+#  Loading
 
-Building dimension tables for descriptive attributes
+The loading phase ingests normalized relational datasets into Snowflake tables.
 
-Introducing a bridge table to handle many‑to‑many playlist–track relationships
+Main tasks:
+- Load staged data into Snowflake tables
+- Apply type casting
+- Perform basic integrity checks
+- Validate schema consistency
 
-🟧 Analysis
+This layer establishes the relational foundation used for dimensional transformation.
 
-Executes analytical SQL queries on the star schema to enable:
+---
 
-Aggregation
+#  Transformation
 
-Filtering
+The transformation layer converts normalized relational tables into a star schema optimized for analytical workloads.
 
-Visualization of musical data
+## Transformation Goals
+
+- Simplify analytical querying
+- Improve reporting performance
+- Reduce join complexity
+- Create BI-friendly structures
+- Support scalable dimensional analysis
+
+---
+
+#  Star Schema Design
+
+The project includes:
+
+## Fact Table
+
+### `fact_music`
+
+Stores track-level analytical records.
 
 Examples:
+- track duration
+- popularity metrics
+- playback-related measures
 
-Track duration analysis
+---
 
-Genre distribution
+## Dimension Tables
 
-Artist comparisons
+Dimension tables provide descriptive analytical context.
 
-Playlist composition
+Examples:
+- dim_artist
+- dim_album
+- dim_genre
+- dim_playlist
 
-🛠️ Tools & Technologies
+---
 
-Snowflake — cloud data warehouse
+## Bridge Table
 
-SQL — ETL scripting and analytical queries
+A bridge table was introduced to manage many-to-many relationships between:
+- playlists
+- tracks
 
-Dimensional Modeling — star schema design
+This structure preserves relational flexibility while supporting dimensional analysis.
 
-Data Quality Validation — integrity and consistency checks
+---
 
-📈 Analytical Use Cases
+#  Analysis
 
-Track‑level performance metrics
+Analytical SQL queries were executed against the star schema to generate insights and support business-oriented analysis.
 
-Genre‑based aggregation
+The star schema enables:
+- efficient aggregations
+- filtering
+- dimensional analysis
+- reporting-ready querying
 
-Artist and album comparisons
+---
 
-Playlist composition analysis
+#  Analytical Use Cases
 
-🚀 How to Run
+Examples of analysis supported by the warehouse:
 
-Create a Snowflake database and warehouse
+- Track duration analysis
+- Genre distribution analysis
+- Artist comparisons
+- Album comparisons
+- Playlist composition analysis
+- Music catalog exploration
+- Aggregated reporting
 
-Execute SQL scripts in numerical order
+---
 
-Verify schema relationships using the star schema diagram
+# 🛠️ Tools & Technologies
 
-Run analysis queries to generate insights
+| Category | Tools / Technologies |
+|---|---|
+| Data Warehouse | Snowflake |
+| Querying & Transformation | SQL |
+| Modeling Approach | Dimensional Modeling |
+| Architecture | ELT |
+| Data Validation | Integrity & Consistency Checks |
+
+---
+
+#  Repository Structure
+
+```text
+snowflake-music-etl/
+│
+├── 01_create_stage
+├── 02_build_star_schema
+├── 03_analysis_queries
+└── README.md
+```
+
+---
+
+#  Data Quality & Validation
+
+Basic validation steps include:
+- schema consistency checks
+- null handling
+- integrity validation
+- type consistency checks
+
+These validations help ensure reliable transformations and trustworthy analytical outputs.
+
+---
+
+#  How to Run
+
+## 1. Create Snowflake Environment
+
+Create:
+- Snowflake database
+- warehouse
+- schemas
+
+---
+
+## 2. Execute SQL Scripts
+
+Run SQL scripts in numerical order:
+
+```text
+01_create_stage.sql
+02_build_star_schema.sql
+03_analysis_queries.sql
+
+```
+
+---
+
+## 3. Validate Star Schema Relationships
+
+Review:
+- fact-to-dimension relationships
+- bridge table relationships
+- dimensional modeling structure
+
+---
+
+## 4. Execute Analytical Queries
+
+Run analytical SQL queries to generate insights and validate warehouse functionality.
+
+---
+
+# Key Concepts Demonstrated
+
+This project demonstrates understanding of:
+
+- Snowflake ELT workflows
+- Snowflake staging and loading
+- Dimensional modeling
+- Star schema design
+- Fact and dimension modeling
+- Bridge table implementation
+- Analytical query optimization
+- Relational-to-dimensional transformation
+
+---
+
+#  Future Improvements
+
+Potential future enhancements include:
+
+- dbt integration
+- CI/CD implementation
+- Incremental loading strategies
+- Automated testing
+- Dashboard integration
+- Advanced data quality checks
+- Query performance optimization
+
+---
+
+#  Author
+
+Sabina Thapa Magar
+
+- Snowflake
+- SQL
+- Data Warehousing
+- ELT
+- Dimensional Modeling
+- Analytics Engineering Concepts
